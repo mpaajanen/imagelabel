@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Image = require('../../models/Images');
+const Image = require('../../models/Image');
 
 // @route GET api/images/test
 // @description tests images route
