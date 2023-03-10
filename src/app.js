@@ -10,6 +10,7 @@ connectDB();
 
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json({ extended: false }));
+app.use(express.static('build'))
 
 app.get('/', (req, res) => res.send('Hello world!'));
 
