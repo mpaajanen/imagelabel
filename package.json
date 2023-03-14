@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/mpaajanen/imagelabel#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
     "config": "^3.3.9",
     "cors": "^2.8.5",
