@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken')
 const router = express.Router();
 
 const Image = require('../../models/Image');
-const User = require('../../models/User')
 
 const getTokenFrom = request => {
   const authorization = request.get('authorization')
@@ -44,25 +43,11 @@ router.post('/', (req, res) => {
     .catch(err => res.status(400).json({ error: 'Unable to add this image' }));
 });
 
-// @route GET api/images/:id
-// @description Update image
-// @access Public
-// router.put('/:id', (req, res) => {
-//   Image.findByIdAndUpdate(req.params.id, req.body)
-//     .then(image => res.json({ msg: 'Updated successfully' }))
-//     .catch(err =>
-//       res.status(400).json({ error: 'Unable to update the Database' })
-//     );
-// });
-
 router.put('/:id', async (req, res) => {
-  // const body = req.body
   const decodedToken = jwt.verify(getTokenFrom(req), process.env.SECRET)
   if (!decodedToken.id) {
     return res.status(401).json({ error: 'invalid token'})
   }
-
-  // const user = await User.findById(decodedToken.id)
 
   try {
     const updatedImage = await Image.findByIdAndUpdate(req.params.id, req.body, { new: true })
