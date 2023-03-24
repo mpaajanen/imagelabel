@@ -38,9 +38,12 @@ router.get('/:id', (req, res) => {
 // @description add/save image
 // @access Public
 router.post('/', (req, res) => {
-  Image.create(req.body)
-    .then(image => res.json({ msg: 'Image added successfully' }))
-    .catch(err => res.status(400).json({ error: 'Unable to add this image' }));
+  // console.log(req.body.images)
+  req.body.images.forEach(image => {
+    Image.create(image)
+      // .then(img => res.json({ msg: 'Image added successfully' }))
+      .catch(err => res.status(400).json({ error: 'Unable to add this image' }));
+  });
 });
 
 router.put('/:id', async (req, res) => {
