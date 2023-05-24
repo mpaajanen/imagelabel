@@ -1,5 +1,7 @@
 /build
 /request
+/src/build
+/config/default.json
 
 # Logs
 logs
@@ -105,3 +107,4 @@ dist
 
 # TernJS port file
 .tern-port
+config/default.json
